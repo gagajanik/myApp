@@ -11,7 +11,9 @@ export class SingupComponent implements OnInit {
   form: FormGroup;
   constructor(private fb: FormBuilder) {
   this.form = this.fb.group({
-    username : ['', Validators.required]
+    username : ['', Validators.required],
+    firstName : ['', Validators.required],
+    lastName : ['', Validators.required]
   });
   }
 submit() {
