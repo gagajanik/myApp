@@ -1,8 +1,10 @@
 <form [formGroup]="form">
   <div class="form-group">
-    <input type="text" class="control-group" formControlName="username">
-    <input type="text" class="control-group" formControlName="firstName">
-    <input type="text" class="control-group" formControlName="lastName">
-    <button type="submit" [disabled]="!form.valid" (click)="submit()">submit</button>
+    <div>{{infoWindow}}</div>
+    <input type="text" class="control-group" formControlName="username"><br>
+    <input type="text" minlength="4" class="control-group" formControlName="firstName"><br>
+    <div>{{alr}}</div>
+    <input type="text" class="control-group" formControlName="lastName"><br>
+    <button type="submit" (click)="submit()">submit</button>
   </div>
 </form>

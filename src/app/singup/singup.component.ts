@@ -9,15 +9,33 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class SingupComponent implements OnInit {
 
   form: FormGroup;
+  infoWindow = '';
+  alr = '';
   constructor(private fb: FormBuilder) {
   this.form = this.fb.group({
-    username : ['', Validators.required],
-    firstName : ['', Validators.required],
-    lastName : ['', Validators.required]
+    username : ['', Validators.compose([
+      Validators.required,
+      Validators.minLength(4)
+    ])],
+    firstName : ['', this.textValidation],
+    lastName : ['', Validators.compose([
+      Validators.required,
+      Validators.minLength(4)
+    ])],
   });
   }
 submit() {
-    alert(this.form.valid);
+    if (this.form.valid) {
+      this.infoWindow = '*ოპერაცია წარმატებით შესრულდა!';
+    } else {
+      this.infoWindow = '*შეავსეთ ყველა ველი!';
+    }
+}
+
+textValidation(control) {
+    if (control.value.length < 4) {
+      return {'firstName': false};
+    }
 }
   ngOnInit() {
   }
